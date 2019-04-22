@@ -15,7 +15,7 @@
  */
 package org.japo.java.forms;
 
-import java.awt.Font;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.Properties;
@@ -30,20 +30,16 @@ public final class GUI extends JFrame {
 
     // Propiedades App
     public static final String PRP_FAVICON_RESOURCE = "favicon_resource";
-    public static final String PRP_FONT_RESOURCE = "font_resource";
-    public static final String PRP_FORM_HEIGHT = "form_height";
-    public static final String PRP_FORM_WIDTH = "form_width";
     public static final String PRP_FORM_TITLE = "form_title";
-    public static final String PRP_IMAGE_RESOURCE = "image_resource";
+    public static final String PRP_FORM_WIDTH = "form_width";
+    public static final String PRP_FORM_HEIGHT = "form_height";
     public static final String PRP_LOOK_AND_FEEL_PROFILE = "look_and_feel_profile";
 
     // Valores por Defecto
     public static final String DEF_FAVICON_RESOURCE = "img/favicon.png";
-    public static final String DEF_FONT_FALLBACK_NAME = Font.SERIF;
-    public static final String DEF_FONT_SYSTEM_NAME = "Kaufmann BT";
-    public static final int DEF_FORM_HEIGHT = 300;
-    public static final int DEF_FORM_WIDTH = 500;
     public static final String DEF_FORM_TITLE = "Swing Manual App";
+    public static final int DEF_FORM_WIDTH = 500;
+    public static final int DEF_FORM_HEIGHT = 300;
     public static final String DEF_LOOK_AND_FEEL_PROFILE = UtilesSwing.LNF_WINDOWS_PROFILE;
 
     // Referencias
@@ -73,9 +69,14 @@ public final class GUI extends JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Here comes the Title");
+        lblRotulo = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Swing Asistido #02");
+        setBackground(java.awt.Color.magenta);
         setUndecorated(true);
+        setResizable(false);
+        setSize(new java.awt.Dimension(500, 300));
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 formMouseDragged(evt);
@@ -91,17 +92,12 @@ public final class GUI extends JFrame {
                 formKeyPressed(evt);
             }
         });
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        lblRotulo.setFont(new java.awt.Font("Cambria", 0, 32)); // NOI18N
+        lblRotulo.setForeground(java.awt.Color.white);
+        lblRotulo.setText("Arrástrame (ESC - Salir)");
+        getContentPane().add(lblRotulo, new java.awt.GridBagConstraints());
 
         setSize(new java.awt.Dimension(500, 300));
         setLocationRelativeTo(null);
@@ -120,6 +116,7 @@ public final class GUI extends JFrame {
     }//GEN-LAST:event_formMouseDragged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lblRotulo;
     // End of variables declaration//GEN-END:variables
     //
     // Inicialización Anterior    
@@ -135,6 +132,9 @@ public final class GUI extends JFrame {
         org.japo.java.libraries.UtilesSwing.establecerFavicon(this, prp.getProperty(
                 PRP_FAVICON_RESOURCE, DEF_FAVICON_RESOURCE));
 
+        // Panel Contendedor
+        getContentPane().setBackground(new Color(0, true));
+        
         // Ventana Principal
         setTitle(prp.getProperty(PRP_FORM_TITLE, DEF_FORM_TITLE));
         try {
